@@ -1,0 +1,184 @@
+Timer unit: 1e-06 s
+
+Total time: 21.6312 s
+File: /home/gnone/edoardo-ghignone/drivers/src/utils/MPC_utils.py
+Function: get_forces_params at line 701
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   701                                           @profile
+   702                                           def get_forces_params(prev_inputs, X, U, Z_hist, track, track_hard, slow_threshold):
+   703                                           
+   704       650       2426.0      3.7      0.0      params = {}
+   705       650       3151.0      4.8      0.0      F_constr = np.empty((0, 2))
+   706       650       2838.0      4.4      0.0      f_constr = np.empty((0))
+   707                                           
+   708       650      45108.0     69.4      0.2      use_slow = np.min((X[Index.V], np.min(Z_hist[:, Index.V]))) < slow_threshold
+   709       650       1847.0      2.8      0.0      N = MPC_params['N']
+   710       650       1300.0      2.0      0.0      n_x = MPC_params['n_x']
+   711       650       1305.0      2.0      0.0      n_u = MPC_params['n_u']
+   712       650       1251.0      1.9      0.0      n_z = MPC_params['n_z']
+   713       650       1459.0      2.2      0.0      n_tot=n_z+n_u
+   714       650       1354.0      2.1      0.0      T_s = MPC_params['T_s']
+   715       650       1255.0      1.9      0.0      q_c = MPC_params['q_c']
+   716       650       1280.0      2.0      0.0      q_l = MPC_params['q_l']
+   717       650       1353.0      2.1      0.0      gamma = MPC_params['gamma']
+   718       650       1266.0      1.9      0.0      nu_soft = MPC_params['nu_soft']
+   719       650      20815.0     32.0      0.1      R = np.diag(MPC_params['R'])
+   720       650       1381.0      2.1      0.0      max_A_el = -1
+   721                                           
+   722      7800      16278.0      2.1      0.1      for i in range(N+1):
+   723      7150      15103.0      2.1      0.1          if DEBUG['warm_start']:
+   724                                                       key = 'z_init_{0:02d}'.format(i)
+   725                                                       value = np.empty((n_tot))
+   726                                                       if i==0:
+   727                                                           value[:n_x] = X
+   728                                                           value[n_x:n_z] = U
+   729                                                           value[n_z:n_tot] = prev_inputs
+   730                                                           
+   731                                                       if i==1:
+   732                                                           value[:n_z] = Z_hist[i-1, :]
+   733                                                           value[n_z:n_tot] = U
+   734                                                       else:
+   735                                                           value[:n_z] = Z_hist[i-1, :]
+   736                                                           value[n_z:n_tot] = Z_hist[i-2, n_x:]
+   737                                                       params[key] = value
+   738                                                   
+   739      7150      28062.0      3.9      0.1          num_str = str(i+1)
+   740                                                   
+   741      7150      30928.0      4.3      0.1          theta_dynamic = np.zeros(n_tot)
+   742                                           
+   743                                                   # THETA AND STATE DYNAMIC
+   744      7150      22730.0      3.2      0.1          theta_dynamic[Index.THETA] =  -1
+   745      7150      18634.0      2.6      0.1          theta_dynamic[Index.V_K] = -T_s 
+   746      7150      12932.0      1.8      0.1          const_lin_theta = 0
+   747                                                   
+   748      7150      13691.0      1.9      0.1          key = 'c_' + num_str
+   749      7150      13202.0      1.8      0.1          if i==0:
+   750       650       2267.0      3.5      0.0              params[key] = X[:Index.THETA+1]
+   751                                                   else:
+   752      6500      11506.0      1.8      0.1              if i==1:
+   753      1300    6687299.0   5144.1     30.9                  A_l, B_l, g_l = comp_utils.linearise_dynamics(
+   754       650       1783.0      2.7      0.0                      X[:7], 
+   755       650       1122.0      1.7      0.0                      U,
+   756       650       1091.0      1.7      0.0                      use_slow,
+   757                                                               )
+   758                                                       else:
+   759     11700     181486.0     15.5      0.8                  A_l, B_l, g_l = comp_utils.linearise_dynamics(
+   760      5850      15740.0      2.7      0.1                      Z_hist[i-2, :7], 
+   761      5850      12972.0      2.2      0.1                      Z_hist[i-2, n_x:],
+   762      5850       9592.0      1.6      0.0                      use_slow,
+   763                                                               )
+   764      6500    1057754.0    162.7      4.9              A_k, B_k, g_k = comp_utils.discretise_dynamics(A_l, B_l, g_l, T_s)
+   765                                           
+   766      6500     131496.0     20.2      0.6              max_A_el= max(np.abs(A_k).max(), max_A_el)
+   767                                                       
+   768      6500      32671.0      5.0      0.2              state_const = np.zeros(A_k.shape[0]+1+n_u)
+   769      6500      25191.0      3.9      0.1              state_const[:7] = g_k
+   770      6500      20619.0      3.2      0.1              state_const[Index.THETA] = const_lin_theta
+   771      6500      15233.0      2.3      0.1              params[key] = state_const
+   772                                           
+   773      6500      20286.0      3.1      0.1              key = 'C_' + str(i)
+   774                                           
+   775                                                       # do not change 0-th dim, it's equal to n_x only by chance
+   776      6500      35970.0      5.5      0.2              state_matr = np.zeros((A_k.shape[0]+1+n_u, n_tot)) 
+   777      6500      36889.0      5.7      0.2              state_matr[:7, :7] = -A_k
+   778      6500      24575.0      3.8      0.1              state_matr[:7, n_x:n_z] = -B_k
+   779      6500      26329.0      4.1      0.1              state_matr[Index.THETA, :] = theta_dynamic.T
+   780      6500     106680.0     16.4      0.5              state_matr[8:, :] = -np.eye(n_u, n_tot, n_x)
+   781      6500      14328.0      2.2      0.1              params[key] = state_matr
+   782                                           
+   783                                                   # COST
+   784      7150      31006.0      4.3      0.1          H = np.zeros((n_tot, n_tot))
+   785      7150      24983.0      3.5      0.1          f = np.zeros(n_tot)
+   786                                           
+   787      7150      15272.0      2.1      0.1          if DEBUG["error_approx"]:
+   788      7150    3790331.0    530.1     17.5              E_c, e_c = linearise_error(Z_hist[i-1, :n_x], track, 'cont')
+   789      7150    3302116.0    461.8     15.3              E_l, e_l = linearise_error(Z_hist[i-1, :n_x], track, 'lag')
+   790      7150     130203.0     18.2      0.6              tmp = q_c*E_c@E_c.T + q_l*E_l@E_l.T 
+   791                                           
+   792      7150      91024.0     12.7      0.4              H[:n_x, :n_x] += tmp
+   793      7150      77188.0     10.8      0.4              tmp_prod_c, = Z_hist[i-1, :n_x] @ E_c
+   794      7150      44153.0      6.2      0.2              tmp_prod_l, = Z_hist[i-1, :n_x] @ E_l
+   795      7150      14733.0      2.1      0.1              if i == N:
+   796      1950       9452.0      4.8      0.0                  f[:n_x] += np.array(
+   797      1300       8451.0      6.5      0.0                          20*q_c*(e_c*E_c - tmp_prod_c*E_c) \
+   798       650       4224.0      6.5      0.0                              + 2*q_l*(e_l*E_l - tmp_prod_l*E_l)
+   799       650       1129.0      1.7      0.0                      ).reshape(n_x,)
+   800                                                       else:
+   801     19500      98783.0      5.1      0.5                  f[:n_x] += np.array(
+   802     13000      89352.0      6.9      0.4                      2*q_c*(e_c*E_c - tmp_prod_c*E_c) \
+   803      6500      43791.0      6.7      0.2                          + 2*q_l*(e_l*E_l - tmp_prod_l*E_l)
+   804      6500      11566.0      1.8      0.1                      ).reshape(n_x,)
+   805                                                   
+   806      7150      39575.0      5.5      0.2          H[Index.BETA, Index.BETA] += 10
+   807                                           
+   808      7150      24336.0      3.4      0.1          f[Index.V_K] += -gamma*T_s
+   809                                           
+   810      7150      17105.0      2.4      0.1          if DEBUG['var_inputs']: 
+   811      7150      21092.0      2.9      0.1              red_R = R[1:,1:]
+   812      7150      26686.0      3.7      0.1              mod = np.zeros((n_tot, n_u))
+   813      7150      21997.0      3.1      0.1              mod[Index.V_DELTA, 0] = -1
+   814      7150      18707.0      2.6      0.1              mod[Index.V_DELTA+n_u, 0] = 1
+   815      7150      17905.0      2.5      0.1              mod[Index.ACC, 1] = -1
+   816      7150      16696.0      2.3      0.1              mod[Index.ACC+n_u, 1] = 1
+   817      7150      96327.0     13.5      0.4              matr = mod @ red_R @ mod.T 
+   818      7150      34603.0      4.8      0.2              H += matr
+   819                                           
+   820                                                   # SOFT COST
+   821      7150      13151.0      1.8      0.1          soft_mult = 1 # + max_vel*1e2
+   822      7150      22275.0      3.1      0.1          f[Index.SOFT] = soft_mult*nu_soft 
+   823      7150      24675.0      3.5      0.1          H[Index.SOFT, Index.SOFT] += nu_soft*10
+   824                                           
+   825                                                   # another personal addition
+   826                                                   # should enforce alignment of last state with track
+   827                                                   # Liniger confirmed it's sensible
+   828      7150      13705.0      1.9      0.1          if i==N:
+   829                                                       pass
+   830                                                       # coeff = 1
+   831                                                       # H[Index.PHI, Index.PHI] += coeff
+   832                                                       # f[Index.PHI] += -2*track.get_angle(
+   833                                                       #       Z_hist[i-1, Index.THETA]
+   834                                                       #     )*coeff
+   835                                           
+   836      7150      16534.0      2.3      0.1          key = 'H_' + num_str
+   837      7150      50918.0      7.1      0.2          params[key] = 2*H
+   838      7150      14455.0      2.0      0.1          key = 'f_' + num_str
+   839      7150      15120.0      2.1      0.1          params[key] = f
+   840                                           
+   841      7150      13224.0      1.8      0.1          if i>0 :
+   842                                                       # track constraints
+   843      6500    4217910.0    648.9     19.5              F, f = get_track_constraints(track, Z_hist[i-1, Index.THETA])
+   844      6500      40528.0      6.2      0.2              F[:, Index.SOFT] = -1
+   845      6500     111689.0     17.2      0.5              F_constr = np.append(F_constr, F[:, :2], axis=0)
+   846      6500      73818.0     11.4      0.3              f_constr = np.append(f_constr, f, axis=0)
+   847                                           
+   848                                                       if True:
+   849      6500      15727.0      2.4      0.1                  if DEBUG['hard_track_constr']:
+   850                                                               A_constr = F
+   851                                                               b_constr = f
+   852                                                               pass
+   853                                                               """F_hard, f_hard = get_track_constraints(
+   854                                                                       track_hard, Z_hist[i-1, Index.THETA]
+   855                                                                   )
+   856                                           
+   857                                                               F_constr = np.append(F_constr, F_hard[:, :2], axis=0)
+   858                                                               f_constr = np.append(f_constr, f_hard, axis=0)
+   859                                                           
+   860                                                               A_constr = np.concatenate((F, F_hard), axis=0)
+   861                                                               b_constr = np.concatenate((f, f_hard), axis=None)"""
+   862                                                           else:
+   863      6500      12551.0      1.9      0.1                      A_constr = F
+   864      6500      11581.0      1.8      0.1                      b_constr = f
+   865                                           
+   866      6500      24916.0      3.8      0.1                  constr_matr = np.zeros((A_constr.shape[0], n_tot))
+   867      6500      27389.0      4.2      0.1                  constr_matr[:, :n_x] = A_constr
+   868                                                           #print("A constr, ", A_constr) 
+   869                                           
+   870      6500      14786.0      2.3      0.1                  key = 'A_' + num_str
+   871      6500      13964.0      2.1      0.1                  params[key] = constr_matr
+   872      6500      12204.0      1.9      0.1                  key = 'b_' + num_str
+   873      6500      12329.0      1.9      0.1                  params[key] = b_constr
+   874                                               
+   875       650       1171.0      1.8      0.0      return params, F_constr, f_constr, max_A_el
+

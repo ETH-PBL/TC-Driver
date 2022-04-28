@@ -1,0 +1,66 @@
+N: !!int "20" # horizon length
+n_x: !!int "10" # state dimension
+n_u: !!int "2" # input dimension
+n_z: !!int "12" # total dimension
+gamma: !!float "250" # advancement cost multiplier
+T_s: !!float "0.04" # MPC sampling timestep
+nu_soft: !!float "5000" # penaliser of slack variable of soft constraints
+q_c: !!float "0.05" # coefficient on contouring error
+q_l: !!float "500" # coefficient on lag error
+R: !!seq # diagonal elements of the delta cost part
+  - 0.0
+  - 1
+  - 1
+states_name: !!seq
+  - 's_x'
+  - 's_y'
+  - 'delta'
+  - 'v'
+  - 'phi'
+  - 'phi_dot'
+  - 'beta'
+  - 'theta'
+  - 'soft'
+  - 'v_k'
+  - 'v_delta'
+  - 'acc'
+nlp_states_name: !!seq
+  - 'soft'
+  - 'v_delta'
+  - 'acc'
+  - 's_x'
+  - 's_y'
+  - 'delta'
+  - 'v'
+  - 'phi'
+  - 'phi_dot'
+  - 'beta'
+  - 'theta'
+lower_bound: !!map
+  s_x: -500
+  s_y: -500
+  delta: -0.4189
+  v: -5
+  phi: -100
+  phi_dot: -3.2
+  beta: -6.2831853
+  theta: -500 # be careful this actually depends on the track
+  soft: 0
+  v_k: 0
+  v_delta: -3.2
+  acc: -9.51
+upper_bound: !!map
+  s_x: 500
+  s_y: 500
+  delta: 0.4189
+  v: 10
+  phi: 100
+  phi_dot: 3.2
+  beta: 6.2831853
+  theta: 3000 # be careful this actually depends on the track
+  soft: 10000
+  v_k: 1000 # shouldn't be really limited according to AL
+  v_delta: 3.2
+  acc: 9.51
+slow_threshold: !!float "0.5"
+start_par: !!float "350"

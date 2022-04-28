@@ -1,0 +1,18 @@
+image: SILVERSTONE_OBS.png
+resolution: 0.07712
+origin: [-90.25,-29.5, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196
+starting_angle: 1.0471975511965976 # 60 degrees in radians
+default_resolution: 0.07712
+
+# map paths
+map_path: './configs/SILVERSTONE_OBS'
+map_ext: '.png'
+
+
+# starting pose for map
+sx: 0.8007017
+sy: -0.2753365
+stheta: 4.1421595

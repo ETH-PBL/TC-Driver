@@ -1,0 +1,85 @@
+version: '3'
+
+services:
+
+  vnc: &vnc
+    image: registry.gitlab.com/acrome-colab/riders-poc/f1tenth-riders-quickstart/vnc:latest
+    build:
+      context: .
+      dockerfile: compose/vnc/Dockerfile
+      args: 
+        - PARENT=ros:noetic-robot-focal
+        - ROS_DISTRO=noetic
+
+  roscore: &roscore
+    image: registry.gitlab.com/acrome-colab/riders-poc/f1tenth-riders-quickstart/roscore:latest
+    build: 
+      context: compose/roscore
+      args: 
+        - PARENT=registry.gitlab.com/acrome-colab/riders-poc/f1tenth-riders-quickstart/vnc:latest
+  
+  roscore-dev:
+    <<: *roscore
+    volumes: 
+      - ./compose/roscore/start.sh:/start.sh
+    stdin_open: true
+    ports:
+      # expose ROSCORE port to Out
+      - 11311:11311
+
+  bridge: &bridge
+    image: registry.gitlab.com/acrome-colab/riders-poc/f1tenth-riders-quickstart/bridge:latest
+    build:
+      context: .
+      dockerfile: compose/bridge/Dockerfile
+      args: 
+        - PARENT=registry.gitlab.com/acrome-colab/riders-poc/f1tenth-riders-quickstart/vnc:latest
+
+  bridge-dev:
+    <<: *bridge
+    stdin_open: true
+    ports:
+      - 6080:6080
+    volumes:
+      - ./f1tenth_gym_ros:/catkin_ws/src/f1tenth_gym_ros
+      - ./compose/bridge/f1tenth.rviz:/f1tenth.rviz
+      - ./compose/bridge/start.sh:/start.sh
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ROS_MASTER_URI=http://host.docker.internal:11311
+      - RACE_MAP_PATH=${RACE_MAP_PATH}
+      - RACE_MAP_IMG_EXT=${RACE_MAP_IMG_EXT}
+      # Scenario: 0 for single car timed trial (qualifying), 1 for dual car racing (grand prix)
+      - RACE_SCENARIO=0
+      - EGO_ID=${F1TENTH_AGENT_NAME}
+      # Ignored if RACE_SCENARIO=0, used if RACE_SCENARIO=1
+      - OPP_ID=${F1TENTH_OPP_NAME}
+
+  #
+  # DO NOT CHANGE THIS CODE
+  # IF you want to update your agent, simply use Dockerfile
+  #
+  agent: &agent
+    image: ${F1TENTH_AGENT_IMAGE}
+    build:
+      context: .
+      dockerfile: compose/agent/Dockerfile
+      args:
+        - PARENT=registry.gitlab.com/acrome-colab/riders-poc/f1tenth-riders-quickstart/roscore:latest
+
+  agent-dev:
+    <<: *agent
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ROS_MASTER_URI=http://host.docker.internal:11311
+      - F1TENTH_AGENT_NAME=${F1TENTH_AGENT_NAME}
+    volumes:
+      - ./pkg:/catkin_ws/src/pkg
+
+#  opp-dev:
+#    <<: *agent
+#    environment:
+#      - ROS_MASTER_URI=http://host.docker.internal:11311
+#      - F1TENTH_AGENT_NAME=${F1TENTH_OPP_NAME}
+#    volumes:
+#      - ./pkg:/catkin_ws/src/pkg

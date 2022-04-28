@@ -1,0 +1,8 @@
+image: smile.png
+resolution: 0.050000
+origin: [-11.606540, -36.520793, 0.000000]
+negate: 0
+occupied_thresh: 0.30
+free_thresh: 0.196
+
+start_point: [0 , -1, 0]

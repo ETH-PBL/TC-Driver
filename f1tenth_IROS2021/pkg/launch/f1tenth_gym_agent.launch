@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="pkg" type="f1tenth_ros_agent.py" name="gym_agent_$(env F1TENTH_AGENT_NAME)" output="screen"/>
+</launch>

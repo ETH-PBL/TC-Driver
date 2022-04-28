@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="600"
+   height="600"
+   viewBox="0 0 158.75 158.75"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="/home/gnone/edoardo-ghignone/drivers/src/maps/f_centerline_new.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.1.1 (26b7af14f2, 2022-01-19)"
+   sodipodi:docname="f.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="px"
+     width="600px"
+     inkscape:zoom="1.0633188"
+     inkscape:cx="280.72484"
+     inkscape:cy="390.75769"
+     inkscape:window-width="2560"
+     inkscape:window-height="1376"
+     inkscape:window-x="1920"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Livello 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 23.5976,36.718216 c -0.121877,-6.173914 0.706423,-16.747891 12.525663,-16.868652 13.055921,-0.133397 65.881867,0.348164 76.793497,0.416225 7.22324,0.04505 15.17863,3.972108 15.09128,12.376746 -0.0793,7.632035 -0.0638,3.318255 -0.20397,6.773695 -0.14016,3.45544 -3.51014,12.107328 -17.19319,12.57696 -9.53442,0.327241 -29.739312,-0.497944 -33.964122,-0.510365 -4.224811,-0.01242 -14.793873,-0.803137 -14.849791,10.596683 -0.06679,13.617336 12.63989,13.522563 19.32433,14.051699 6.391583,0.505953 7.055433,0.569674 9.275797,0.661152 7.565972,0.311716 16.330856,2.533161 15.849096,12.86482 -0.47106,10.331617 -10.585883,10.051035 -18.882502,11.220911 -8.296618,1.16988 -20.930945,1.87712 -26.844459,2.44101 -5.913514,0.56389 -8.576359,3.07374 -10.384133,10.82398 -1.524289,6.53488 -3.379764,14.69348 -3.930639,16.93743 -0.550876,2.24396 -1.888468,10.78456 -10.360931,10.82393 -7.279688,-0.007 -10.201029,-4.41323 -10.274017,-10.49176 -0.01628,-1.35553 -1.850032,-88.520551 -1.971909,-94.694464 z"
+       id="path1377"
+       sodipodi:nodetypes="zssszszsssczzszcsz" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="INVISIBILE"
+     style="display:none">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 17.172336,16.344095 C 18.52193,8.6335461 78.452367,8.7917235 121.21911,15.16847 c 21.1838,4.352229 15.00493,36.510417 2.36124,39.361387 -17.83671,3.670562 -25.63491,3.968186 -43.144641,4.61419 -8.287899,0.21237 -8.461889,5.234446 -0.298673,6.449519 l 22.963374,3.514393 c 14.16049,3.159936 13.10091,32.370091 -1.76589,36.136851 -13.269723,3.50874 -39.24136,4.57741 -42.572057,9.54267 -4.128106,5.55118 -5.550594,16.56075 -8.386198,27.57757 -1.842294,7.73678 -28.340922,7.63877 -29.000694,-2.67681 C 19.224591,95.340948 15.00168,27.344707 17.172336,16.344095 Z"
+       id="path1121"
+       sodipodi:nodetypes="ccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 33.364457,33.709618 c 2.148912,-8.019847 55.695775,-9.026469 77.466783,-3.689857 12.88008,2.875266 15.7242,10.428504 1.27946,12.06822 0,0 -33.866863,3.138259 -53.845516,5.236866 C 45.81825,48.928921 44.34436,71.328133 54.888797,73.917895 l 32.454197,8.738597 c 11.644594,3.025581 11.835654,7.978834 0.108594,9.481371 -14.861901,1.433754 -32.588367,2.972513 -40.162312,10.674747 -4.511889,4.15572 -6.026527,13.93103 -8.26476,24.73002 -1.166385,3.7921 -4.65166,5.26141 -4.263859,-0.99951 -0.596516,-32.196516 -3.49774,-84.990446 -1.3962,-92.833502 z"
+       id="path1123"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="/home/gnone/edoardo-ghignone/drivers/maps/f.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+controller_mode: MPCC
+run_name: MPCC_0
+safety_margin: 2.3
+start_parameter: 0
+track_name: smile

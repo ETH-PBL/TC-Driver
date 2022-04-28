@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- file needs to be copied to '$HOME/.config/openbox/' folder-->
+<openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <applications>
+        <!-- disables all application window decorators -->
+        <application class="*">
+            <decor>no</decor>
+            <maximized>yes</maximized>
+        </application>
+    </applications>
+    <desktops>
+        <!-- number of allowed desktops-->
+        <number>1</number>
+    </desktops>
+</openbox_config>

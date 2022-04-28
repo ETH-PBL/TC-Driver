@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <rosparam command="load" file="$(find f1tenth_gym_ros)/params.yaml"/>
+  <node pkg="f1tenth_gym_ros" name="gym_bridge" type="gym_bridge_bare.py" output="screen"/>
+</launch>

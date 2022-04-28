@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  submit:
+    build:
+      context: ..
+      dockerfile: compose/submit/Dockerfile
+    environment:
+      - RIDERS_USERNAME=${RIDERS_USERNAME}
+      - RIDERS_PASSWORD=${RIDERS_PASSWORD}
+      - DESCRIPTION=${DESCRIPTION}
+    volumes:
+      - ..:/project

@@ -1,0 +1,12 @@
+error_approx: !!bool True 
+new_error: !!bool False # this would need a different solver
+track_constr: !!bool True
+hard_track_constr: !!bool False
+theta_dyn: !!bool True
+new_theta_dyn: !!bool True
+sys_dyn: !!bool True
+general_constr: !!bool True
+var_inputs: !!bool True
+orig_liniger: !!bool True
+warm_start: !!bool False
+solver: !!str forces
