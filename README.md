@@ -21,10 +21,3 @@ and install the package with
 ```
 pip install .
 ```
-
-### Running something
-The main script to test the beavior of the MPCC controller is car_tester.py in /f1tenth_IROS2021. No arguments are curently available, just call 
-```
-python ./f1tenth_IROS2021/car_tester.py
-```
-(Assuming you are in the root folder of the repository)
