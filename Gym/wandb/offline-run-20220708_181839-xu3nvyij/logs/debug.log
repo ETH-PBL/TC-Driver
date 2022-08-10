@@ -1,0 +1,28 @@
+2022-07-08 18:18:39,158 INFO    MainThread:4891 [wandb_setup.py:_flush():71] setting env: {}
+2022-07-08 18:18:39,158 INFO    MainThread:4891 [wandb_init.py:_log_setup():357] Logging user logs to /home/nicolas/Documents/pbl_f110_gym/wandb/offline-run-20220708_181839-xu3nvyij/logs/debug.log
+2022-07-08 18:18:39,158 INFO    MainThread:4891 [wandb_init.py:_log_setup():358] Logging internal logs to /home/nicolas/Documents/pbl_f110_gym/wandb/offline-run-20220708_181839-xu3nvyij/logs/debug-internal.log
+2022-07-08 18:18:39,158 INFO    MainThread:4891 [wandb_init.py:init():390] calling init triggers
+2022-07-08 18:18:39,158 INFO    MainThread:4891 [wandb_init.py:init():397] wandb.init called with sweep_config: {}
+config: {'map': '/home/nicolas/Documents/pbl_f110_gym/configs/f', 'map_ext': '.png', 'random_init': True, 'sx': 1.023, 'sy': -0.04, 'stheta': 0, 'num_agents': 1, 'ep_len': 500, 'obs_type': 'Frenet', 'params_noise': True, 'var_mu': 0.00140625, 'var_Csf': 0, 'var_Csr': 0, 'redraw_upon_reset': True, 'angle_limit': 0.5235987755982988, 'use_trajectory': True, 'max_vel': 20, 'record_video': True, 'curriculum': False, 'policy_type': 'MlpPolicy', 'total_timesteps': 1000000.0, 'gamma': 0.99}
+2022-07-08 18:18:39,159 INFO    MainThread:4891 [wandb_init.py:init():435] starting backend
+2022-07-08 18:18:39,159 INFO    MainThread:4891 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-07-08 18:18:39,169 INFO    MainThread:4891 [backend.py:ensure_launched():199] starting backend process...
+2022-07-08 18:18:39,176 INFO    MainThread:4891 [backend.py:ensure_launched():205] started backend process with pid: 4932
+2022-07-08 18:18:39,177 INFO    MainThread:4891 [wandb_init.py:init():444] backend started and connected
+2022-07-08 18:18:39,183 INFO    MainThread:4891 [wandb_init.py:init():503] updated telemetry
+2022-07-08 18:18:39,197 INFO    MainThread:4891 [wandb_init.py:init():576] starting run threads in backend
+2022-07-08 18:18:44,199 INFO    MainThread:4891 [wandb_run.py:_console_start():1693] atexit reg
+2022-07-08 18:18:44,204 INFO    MainThread:4891 [wandb_run.py:_redirect():1567] redirect: SettingsConsole.REDIRECT
+2022-07-08 18:18:44,204 INFO    MainThread:4891 [wandb_run.py:_redirect():1572] Redirecting console.
+2022-07-08 18:18:44,206 INFO    MainThread:4891 [wandb_run.py:_redirect():1628] Redirects installed.
+2022-07-08 18:18:44,206 INFO    MainThread:4891 [wandb_init.py:init():603] run started, returning control to user process
+2022-07-08 18:18:44,410 INFO    MainThread:4891 [wandb_run.py:_atexit_cleanup():1663] got exitcode: 1
+2022-07-08 18:18:44,411 INFO    MainThread:4891 [wandb_run.py:_restore():1635] restore
+2022-07-08 18:18:46,725 INFO    MainThread:4891 [wandb_run.py:_wait_for_finish():1793] got exit ret: 
+2022-07-08 18:18:46,828 INFO    MainThread:4891 [wandb_run.py:_wait_for_finish():1793] got exit ret: 
+2022-07-08 18:18:46,931 INFO    MainThread:4891 [wandb_run.py:_wait_for_finish():1793] got exit ret: done: true
+exit_result {
+}
+local_info {
+}
+

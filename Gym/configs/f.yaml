@@ -1,0 +1,18 @@
+image: f.png
+resolution: 0.050000
+origin: [-11.606540, -26.520793, 0.000000]
+negate: 0
+occupied_thresh: 0.25
+free_thresh: 0.196
+
+start_point: [1.023, -0.04,  0]
+
+# map paths
+map_path: './configs/f'
+map_ext: '.png'
+
+
+# starting pose for map
+sx: 1.023
+sy: -0.04
+stheta: 0

@@ -1,0 +1,22 @@
+{
+    "os": "Linux-5.13.0-52-generic-x86_64-with-debian-bullseye-sid",
+    "python": "3.7.11",
+    "heartbeatAt": "2022-07-08T16:18:42.606509",
+    "startedAt": "2022-07-08T16:18:39.157311",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/nicolas/Documents/pbl_f110_gym/train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "git@gitlab.ethz.ch:pbl/research/f1tenth/pbl_f110_gym.git",
+        "commit": "b3c232b041fb39f49a6ae7eaee6fa5e3e77aa189"
+    },
+    "email": "nibauman@student.ethz.ch",
+    "root": "/home/nicolas/Documents/pbl_f110_gym",
+    "host": "bumepad",
+    "username": "nicolas",
+    "executable": "/home/nicolas/anaconda3/envs/f1tenth_gym/bin/python"
+}

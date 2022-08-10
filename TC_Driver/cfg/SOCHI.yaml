@@ -1,0 +1,17 @@
+image: mapSochi.pgm
+resolution: 0.08534
+origin: [-156.68159080844768,-121.23484964729177, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196
+
+
+# map paths
+map_path: './configs/SOCHI'
+map_ext: '.png'
+
+
+# starting pose for map
+sx: 0.8007017
+sy: -0.2753365
+stheta: 4.1421595

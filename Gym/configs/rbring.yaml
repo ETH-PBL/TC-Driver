@@ -1,0 +1,17 @@
+image: rbring.png
+resolution: 0.08534
+origin: [-156.68159080844768,-121.23484964729177, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196
+start_point: [-134, 0, 1.611]
+ 
+# map paths
+map_path: './configs/rbring'
+map_ext: '.png'
+
+
+# starting pose for map
+sx: -134
+sy: 0
+stheta: 1.611

@@ -1,0 +1,10 @@
+image: Oschersleben.png
+resolution: 0.04295
+origin: [-55.07650228661655,-33.57884064395765, 0.000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196
+map_ext: '.png'
+sx: 0.0776411
+sy: 0.0197835
+stheta: 2.8859471

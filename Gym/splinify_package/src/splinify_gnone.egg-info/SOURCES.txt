@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/splinify/__init__.py
+src/splinify/splinify.py
+src/splinify_gnone.egg-info/PKG-INFO
+src/splinify_gnone.egg-info/SOURCES.txt
+src/splinify_gnone.egg-info/dependency_links.txt
+src/splinify_gnone.egg-info/top_level.txt

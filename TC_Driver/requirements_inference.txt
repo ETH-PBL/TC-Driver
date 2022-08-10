@@ -1,0 +1,3 @@
+stable-baselines3
+scipy
+pyglet

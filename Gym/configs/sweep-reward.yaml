@@ -1,0 +1,10 @@
+program: train.py
+method: grid
+metric: 
+  goal: maximize
+  name: ep_rew_mean
+parameters:
+  traj: 
+    values: [0.01, 0.001, 0.0001]
+  action:
+    values: [0.01, 0.001, 0.0001]

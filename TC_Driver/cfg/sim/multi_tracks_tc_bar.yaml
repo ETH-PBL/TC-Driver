@@ -1,0 +1,26 @@
+# SIMULATION PARAMS
+n_exp: !!int 200
+
+car_conf_file: !!str "car_params.yaml"
+model_location: !!str "models/jfr/fast_car/TEST_SIM"
+model_choice: !!str "model_f_SAC_Frenet_trajectory_noise_True/best_model"
+
+
+# map: os.path.join(config_dir, {}.format(map_name)),
+map_name: "Catalunya"
+random_init: True
+num_agents: 1
+ep_len: !!int 6000
+obs_type: !!str "Frenet_trajectory"
+params_noise: !!bool False
+var_mu: !!float 0.00140625 # (0.075/2)**2
+var_Csf: 0
+var_Csr: 0
+redraw_upon_reset: True
+angle_limit: 0.5235987755982988 #30*np.pi/180
+use_trajectory: True
+max_vel: 5
+env_id: !!str "f110_gym:f110rl-v0"
+use_raceline: !!bool True
+use_lidar: !!bool True
+

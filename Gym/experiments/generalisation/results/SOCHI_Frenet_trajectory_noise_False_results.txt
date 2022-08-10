@@ -1,0 +1,22 @@
+Laptimes for the five models: 
+[0.]
+[0.]
+[0.]
+[56.92]
+[0.]
+
+
+Has the car crashed? : 
+[0.]
+[0.]
+[0.]
+[0.]
+[0.]
+
+
+Percentual of advancement : 
+[0.]
+[0.]
+[0.]
+[0.99941267]
+[0.]

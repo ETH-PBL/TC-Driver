@@ -1,0 +1,18 @@
+car_init_theta: -3.0896457417809877
+car_init_x: 1.0761686930005747
+car_init_y: -3.568314116400777
+free_thresh: 0.196
+image: hangar.png
+negate: 0
+occupied_thresh: 0.65
+origin: [-15.896772766113282, -14.073823547363283, 0]
+resolution: 0.05000000074505806
+
+map_path: './configs/hangar'
+map_ext: '.png'
+
+# starting pose for map
+sx: 1.0761686930005747
+sy: -3.568314116400777
+stheta: -3.0896457417809877
+starting_angle: -3.0896457417809877
