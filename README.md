@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # We are still working on the official deployment of this repo, sorry for the delay!!!
 
 
@@ -26,7 +25,7 @@ Here you can see the RVIZ visualisation of TC-Driver and the End2End learned arc
 
 | TC-Driver | End2End |
 | ------ | ------ |
-| ![TC](/misc/imgs/tc_rviz.gif) | ![E2E](/misc/imgs/real_traj.png) |
+| ![TC](/misc/imgs/tc_rviz.gif) | ![E2E](/misc/imgs/e2e_rviz.gif) |
 
 ![Track](/misc/imgs/real_traj.png)
 
