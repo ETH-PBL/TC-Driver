@@ -10,10 +10,29 @@ This repository contains the code to reproduce the proposed TC-Driver, as well a
 
 # Simulation Results
 
+**Tire Generalisation Results**
+Results for experiment with tire friction lower than nominal value and outside of training range. Results come from 200 runs.
 
+|            | Lap time t_\mu [s] | Lap time t_\sigma [s] | Crashes   | Advancement adv_\mu | Advancement adv_\sigma |
+|------------|--------------------|-----------------------|-----------|---------------------|------------------------|
+| MPC        | **10.094**         | 0.501                 | 80.50%    | 32.67%              | 28.26%                 |
+| end-to-end | 11.148             | 0.302                 | 73.50%    | 52.51%              | 28.69%                 |
+| TC-Driver  | 10.798             | **0.143**             | **2.50%** | **99.37%**          | **4.90%**              |
 
+**Track Generalisation results**
+Results for experiment on tracks unseen during training time. Results come from 200 runs.
 
-
+| Track        | Driver     | Lap time t_\mu [s] | Lap time t_\sigma [s] | Crashes    | Advancement adv_\mu | Advancement adv_\sigma |
+|--------------|------------|--------------------|-----------------------|------------|---------------------|------------------------|
+| Autodrome    | MPC        | 46.461             | 0.029                 | 0.00%      | 100.00%             | 0.00%                  |
+| Autodrome    | end-to-end | **52.5527**        | **0.234**             | 96.00%     | 35.09%              | 27.06%                 |
+| Autodrome    | TC-Driver  | 59.020             | 0.307                 | **8.0%**   | **95.32%**          | **17.88%**             |
+| Catalunya    | MPC        | 41.475             | 0.036                 | 0.00%      | 100.00%             | 0.00%                  |
+| Catalunya    | end-to-end | **46.878**         | **0.207**             | 95.50%     | 44.16%              | **30.33%**             |
+| Catalunya    | TC-Driver  | 52.978%            | 0.321                 | **59.50%** | **65.27%**          | 37.03%                 |
+| Oschersleben | MPC        | 25.915             | 0.022                 | 0.00%      | 100.00%             | 0.00%                  |
+| Oschersleben | end-to-end | n.a.               | n.a.                  | 100.00%    | 19.27%              | **19.93%**             |
+| Oschersleben | TC-Driver  | **34.603**         | **0.415**             | **94.00%** | **46.95%**          | 31.23%                 |
 
 
 # Model Free Zero-Shot Sim2Real Capabilities
@@ -31,6 +50,6 @@ Here you can see the RVIZ visualisation of TC-Driver and the End2End learned arc
 
 _Note: Different track recordings following._
 
-Lastly here is a gif of the TC-Driver completing it's track :)
+Lastly here is a gif of the TC-Driver completing its track :)
 ![TC_video](/misc/imgs/tc_video.gif)
 
