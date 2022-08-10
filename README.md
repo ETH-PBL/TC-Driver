@@ -19,7 +19,7 @@ This repository contains the code to reproduce the proposed TC-Driver, as well a
 # Model Free Zero-Shot Sim2Real Capabilities
 The proposed TC-Driver RL agent is trained in simulation only and can be deployed on a physical car, on an unseen track and complete laps with similar crash-ratio as observed in simulation. In the image below, you can see the physical 1:10 scaled F1TENTH car, along with an example track on which it was deployed. 
 
-![Car](/misc/imgs/titlepage_car.png)
+<img src="/misc/imgs/titlepage_car.png" width="500">
 
 Here you can see the RVIZ visualisation of TC-Driver and the End2End learned architectures. TC-Driver can perform the 10 laps with a single crash, while the End2End architecture fails to complete a single lap without crash. Therefore TC-Driver demonstrates a 10% crash ratio on this track, while End2End has a 100% crash ratio. The rosbag recordings are uploaded [here](/TC_Driver/plotting/).
 
@@ -32,5 +32,5 @@ Here you can see the RVIZ visualisation of TC-Driver and the End2End learned arc
 _Note: Different track recordings following._
 
 Lastly here is a gif of the TC-Driver completing it's track :)
-
+![TC_video](/misc/imgs/tc_video.gif)
 
