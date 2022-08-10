@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # We are still working on the official deployment of this repo, sorry for the delay!!!
 
 
@@ -32,4 +33,5 @@ Here you can see the RVIZ visualisation of TC-Driver and the End2End learned arc
 _Note: Different track recordings following._
 
 Lastly here is a gif of the TC-Driver completing it's track :)
+
 
