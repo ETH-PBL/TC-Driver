@@ -95,7 +95,6 @@ If this has been helpful in an academic or industrial context, please consider c
   year = {2022},
   copyright = {Creative Commons Attribution 4.0 International}
 }
-
 ~~~~
 
 
