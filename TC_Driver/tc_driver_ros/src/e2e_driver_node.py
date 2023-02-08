@@ -54,7 +54,7 @@ class E2EDriver(BaseDriver):
         self.observation, self.obs_dim = self._init_obs()
         self.model = self.load_model()
 
-        self.steers = np.zeros((5,1))
+        self.steers = np.zeros((2, 1))
     
     def load_model(self):
         model_name = 'model_f_SAC_Frenet_noise_True/model_last'

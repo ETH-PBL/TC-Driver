@@ -44,7 +44,7 @@ def denorm_action_direct(action, params):
 
         return action
 
-def normalise_observation(obs, params):
+def normalise_observation(obs, params, with_lidar=True):
     """
     Normalises the base observation.
 
@@ -65,9 +65,10 @@ def normalise_observation(obs, params):
     
     max_scan = 30
     min_scan = 0
-    obs['scans'] = np.clip(obs['scans'], min_scan, max_scan)
-    obs['scans'] -= (max_scan-min_scan)/2
-    obs['scans'] *= 2/(max_scan - min_scan)
+    if with_lidar:
+        obs['scans'] = np.clip(obs['scans'], min_scan, max_scan)
+        obs['scans'] -= (max_scan-min_scan)/2
+        obs['scans'] *= 2/(max_scan - min_scan)
 
     max_deviation = 10*params['width']
     min_deviation = 0

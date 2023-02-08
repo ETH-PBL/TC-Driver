@@ -8,7 +8,6 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import PoseStamped
 from visualization_msgs.msg import MarkerArray
 from ackermann_msgs.msg import AckermannDriveStamped
-from stable_baselines3.common.env_util import make_vec_env
 
 from f110_msgs.msg import WpntArray
 from f110_gym.envs import normalisation
@@ -59,7 +58,7 @@ class TCDriver(BaseDriver):
         self.track = None
         self.theta = None # current s of the car
 
-        self.steers = np.zeros((0,1))
+        self.steers = np.zeros((2,1))
 
         self.frequency = 100
 
@@ -98,8 +97,8 @@ class TCDriver(BaseDriver):
             action, _states = self.model.predict(observation, deterministic=True)
 
             steer, vel = normalisation.denorm_action(action=action, params=self.car_params)
-
-            self.steers[1:,:] = self.steers[:-1, :]
+            # filter the steering by low passing slightly
+            self.steers[1:, :] = self.steers[:-1, :]
             self.steers[0, :] = steer
 
             vel = np.clip(vel, 0, 3)

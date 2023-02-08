@@ -8,31 +8,57 @@ A model-free RL approach to tackle model missmatch and enhance track generalisat
 
 This repository contains the code to reproduce the proposed TC-Driver, as well as the benchmark MPCC and End2End architecture in the [F1TENTH Gym environment](https://github.com/f1tenth/f1tenth_gym).  
 
+# Getting Started
+## Installation
+The code is tested on Ubuntu 20.04 with ROS Noetic. You will need to run ROS Noetic.
+```bash
+cd ~/catkin_ws/src/
+git clone https://github.com/ETH-PBL/TC-Driver.git
+cd ~/catkin_ws/src/TC-Driver
+# Install dependencies
+pip install -r requirements.txt
+# Install the custom gym environment
+pip install -e Gym/gym/
+# Install the custom splinify package
+pip install -e Gym/splinify_package/
+# Build the catkin workspace
+catkin build
+```
+## Running the E2E agent in the ROS simulator:
+```bash
+roslaunch f1tenth_simulator pbl_sim_e2e.launch map_name:=f
+```
+
+## Running the TC Driver agent in the ROS simulator:
+```bash
+roslaunch f1tenth_simulator pbl_sim_tc_driver.launch map_name:=f
+```
+
 # Simulation Results
 
 **Tire Generalisation Results**
 Results for experiment with tire friction lower than nominal value and outside of training range. Results come from 200 runs.
 
-|            | Lap time t_\mu [s] | Lap time t_\sigma [s] | Crashes   | Advancement adv_\mu | Advancement adv_\sigma |
-|------------|--------------------|-----------------------|-----------|---------------------|------------------------|
-| MPC        | **10.094**         | 0.501                 | 80.50%    | 32.67%              | 28.26%                 |
-| end-to-end | 11.148             | 0.302                 | 73.50%    | 52.51%              | 28.69%                 |
-| TC-Driver  | 10.798             | **0.143**             | **2.50%** | **99.37%**          | **4.90%**              |
+|            | avg Lap time [s] | std Lap time [s] | Crashes   | avg Advancement | std Advancement |
+|------------|------------------|------------------|-----------|-----------------|-----------------|
+| MPC        | **10.094**       | 0.501            | 80.50%    | 32.67%          | 28.26%          |
+| end-to-end | 11.148           | 0.302            | 73.50%    | 52.51%          | 28.69%          |
+| TC-Driver  | 10.798           | **0.143**        | **2.50%** | **99.37%**      | **4.90%**       |
 
 **Track Generalisation results**
 Results for experiment on tracks unseen during training time. Results come from 200 runs.
 
-| Track        | Driver     | Lap time t_\mu [s] | Lap time t_\sigma [s] | Crashes    | Advancement adv_\mu | Advancement adv_\sigma |
-|--------------|------------|--------------------|-----------------------|------------|---------------------|------------------------|
-| Autodrome    | MPC        | 46.461             | 0.029                 | 0.00%      | 100.00%             | 0.00%                  |
-| Autodrome    | end-to-end | **52.5527**        | **0.234**             | 96.00%     | 35.09%              | 27.06%                 |
-| Autodrome    | TC-Driver  | 59.020             | 0.307                 | **8.0%**   | **95.32%**          | **17.88%**             |
-| Catalunya    | MPC        | 41.475             | 0.036                 | 0.00%      | 100.00%             | 0.00%                  |
-| Catalunya    | end-to-end | **46.878**         | **0.207**             | 95.50%     | 44.16%              | **30.33%**             |
-| Catalunya    | TC-Driver  | 52.978%            | 0.321                 | **59.50%** | **65.27%**          | 37.03%                 |
-| Oschersleben | MPC        | 25.915             | 0.022                 | 0.00%      | 100.00%             | 0.00%                  |
-| Oschersleben | end-to-end | n.a.               | n.a.                  | 100.00%    | 19.27%              | **19.93%**             |
-| Oschersleben | TC-Driver  | **34.603**         | **0.415**             | **94.00%** | **46.95%**          | 31.23%                 |
+| Track        | Driver     | avg Lap time [s] | std Lap time [s] | Crashes    | avg Advancement | std Advancement |
+|--------------|------------|------------------|------------------|------------|-----------------|-----------------|
+| Autodrome    | MPC        | 46.461           | 0.029            | 0.00%      | 100.00%         | 0.00%           |
+| Autodrome    | end-to-end | **52.5527**      | **0.234**        | 96.00%     | 35.09%          | 27.06%          |
+| Autodrome    | TC-Driver  | 59.020           | 0.307            | **8.0%**   | **95.32%**      | **17.88%**      |
+| Catalunya    | MPC        | 41.475           | 0.036            | 0.00%      | 100.00%         | 0.00%           |
+| Catalunya    | end-to-end | **46.878**       | **0.207**        | 95.50%     | 44.16%          | **30.33%**      |
+| Catalunya    | TC-Driver  | 52.978%          | 0.321            | **59.50%** | **65.27%**      | 37.03%          |
+| Oschersleben | MPC        | 25.915           | 0.022            | 0.00%      | 100.00%         | 0.00%           |
+| Oschersleben | end-to-end | n.a.             | n.a.             | 100.00%    | 19.27%          | **19.93%**      |
+| Oschersleben | TC-Driver  | **34.603**       | **0.415**        | **94.00%** | **46.95%**      | 31.23%          |
 
 
 # Model Free Zero-Shot Sim2Real Capabilities

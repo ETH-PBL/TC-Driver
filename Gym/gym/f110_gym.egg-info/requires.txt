@@ -1,6 +1,6 @@
-gym
-numpy
 Pillow
-scipy
+gym
 numba
+numpy
 pyyaml
+scipy
