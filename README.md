@@ -34,6 +34,8 @@ roslaunch f1tenth_simulator pbl_sim_e2e.launch map_name:=f
 roslaunch f1tenth_simulator pbl_sim_tc_driver.launch map_name:=f
 ```
 
+Where `map_name` can be any map within the [map directory](https://github.com/ETH-PBL/TC-Driver/tree/main/F110_ROS_Simulator/maps).
+
 # Simulation Results
 
 **Tire Generalisation Results**
@@ -78,4 +80,22 @@ _Note: Different track recordings following._
 
 Lastly here is a gif of the TC-Driver completing its track :)
 ![TC_video](/misc/imgs/tc_video.gif)
+
+## Acknowledges
+
+If this has been helpful in an academic or industrial context, please consider citing the following publications:
+
+~~~~
+@misc{https://doi.org/10.48550/arxiv.2205.09370,
+  doi = {10.48550/ARXIV.2205.09370},
+  url = {https://arxiv.org/abs/2205.09370},
+  author = {Ghignone, Edoardo and Baumann, Nicolas and Boss, Mike and Magno, Michele},
+  title = {TC-Driver: Trajectory Conditioned Driving for Robust Autonomous Racing -- A Reinforcement Learning Approach},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {Creative Commons Attribution 4.0 International}
+}
+
+~~~~
+
 

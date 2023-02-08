@@ -1,6 +1,3 @@
-car_init_theta: -2.855157052431723
-car_init_x: 1.9989417084871635
-car_init_y: -23.07446885779605
 free_thresh: 0.196
 image: berlin.png
 negate: 0
