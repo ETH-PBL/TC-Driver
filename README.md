@@ -70,9 +70,9 @@ The proposed TC-Driver RL agent is trained in simulation only and can be deploye
 
 Here you can see the RVIZ visualisation of TC-Driver and the End2End learned architectures. TC-Driver can perform the 10 laps with a single crash, while the End2End architecture fails to complete a single lap without crash. Therefore TC-Driver demonstrates a 10% crash ratio on this track, while End2End has a 100% crash ratio. The rosbag recordings are uploaded [here](/TC_Driver/plotting/).
 
-| TC-Driver | End2End |
+| End2End | TC-Driver |
 | ------ | ------ |
-| ![TC](/misc/imgs/tc_rviz.gif) | ![E2E](/misc/imgs/e2e_rviz.gif) |
+| ![TC](/misc/imgs/e2e_rviz.gif) | ![E2E](/misc/imgs/tc_rviz.gif) |
 
 ![Track](/misc/imgs/real_traj.png)
 
