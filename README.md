@@ -1,7 +1,3 @@
-# We are still working on the official deployment of this repo, sorry for the delay!!!
-
-
-
 # TC-Driver: Trajectory Conditioned Driving for Robust Autonomous Racing - A Reinforcement Learning Approach
 
 A model-free RL approach to tackle model missmatch and enhance track generalisation in autonomous racing. Instead of end-to-end RL architectures (control output learned directly from sensory input), we can leverage the reliability of traditional planning methods to interact with a low level RL agent that has learned how to drive/race under varying model parameters. This allows for robustness against model mismatch and greater generalisation towards unseen tracks and demonstrates zero-shot Sim2Real capabilities on a physical F1TENTH race car.
