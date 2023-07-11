@@ -79,17 +79,21 @@ Lastly here is a gif of the TC-Driver completing its track :)
 
 ## Acknowledges
 
-If this has been helpful in an academic or industrial context, please consider citing the following publications:
+If this has been helpful in an academic or industrial context, please consider citing our [publication](https://fieldrobotics.net/Field_Robotics/Volume_3_files/Vol3_20.pdf):
 
 ~~~~
-@misc{https://doi.org/10.48550/arxiv.2205.09370,
-  doi = {10.48550/ARXIV.2205.09370},
-  url = {https://arxiv.org/abs/2205.09370},
-  author = {Ghignone, Edoardo and Baumann, Nicolas and Boss, Mike and Magno, Michele},
-  title = {TC-Driver: Trajectory Conditioned Driving for Robust Autonomous Racing -- A Reinforcement Learning Approach},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {Creative Commons Attribution 4.0 International}
+@article{Ghignone2023,
+  doi = {10.55417/fr.2023020},
+  url = {https://doi.org/10.55417/fr.2023020},
+  year = {2023},
+  month = jan,
+  publisher = {Field Robotics Publication Society},
+  volume = {3},
+  number = {1},
+  pages = {637--651},
+  author = {Edoardo Ghignone and Nicolas Baumann and Michele Magno},
+  title = {{TC}-Driver: A Trajectory Conditioned Reinforcement Learning Approach to Zero-Shot Autonomous Racing},
+  journal = {Field Robotics}
 }
 ~~~~
 
