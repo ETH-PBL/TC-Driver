@@ -460,6 +460,38 @@ class RLF110Env(F110Env):
         """
         self.params['v_max'] = max_vel
 
+    def create_obs_dict(self):
+        obs_dict = {}
+        obs_dict['trajectory']          =  []
+        obs_dict['scan']                =  []
+        obs_dict['param']               =  []
+        obs_dict['deviation']           =  []
+        obs_dict['rel_heading']         =  []
+        obs_dict['longitudinal_vel']    =  []
+        obs_dict['later_vel']           =  []
+        obs_dict['yaw_rate']            =  []
+        obs_dict['action1']             =  []
+        obs_dict['action2']             =  []
+        obs_dict['car_position']        =  []
+
+        return obs_dict
+
+    def save_obs_dict(self, obs):
+        car_position = self.sim.agents[self.ego_idx].state[:2]
+
+        self.obs_dict['trajectory'].append(obs[:60].copy().reshape(-1, 2) + car_position)
+        self.obs_dict['scan'].append(obs[60:133])
+        self.obs_dict['param'].append(obs[133])
+        self.obs_dict['deviation'].append(obs[134])
+        self.obs_dict['rel_heading'].append(obs[135])
+        self.obs_dict['longitudinal_vel'].append(obs[136])
+        self.obs_dict['later_vel'].append(obs[137])
+        self.obs_dict['yaw_rate'].append(obs[138])
+        self.obs_dict['action1'].append(obs[139])
+        self.obs_dict['action2'].append(obs[140])
+        self.obs_dict['car_position'].append(car_position)
+
+
 class RLF110EnvDirect(RLF110Env):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

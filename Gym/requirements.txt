@@ -20,5 +20,5 @@ casadi
 ffmpeg
 moviepy
 tensorboard
-wandb
+wandb==0.14.0
 xvfbwrapper
